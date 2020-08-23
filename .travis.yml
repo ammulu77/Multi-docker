@@ -20,7 +20,6 @@ after_success:
     # Login into the Docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     
-    # I am here Pushing the images to the docker hub
     - docker push perikala/multi-client
     - docker push perikala/multi-nginx
     - docker push perikala/multi-server
