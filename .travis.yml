@@ -1,0 +1,28 @@
+ sudo: required
+
+ services: 
+    - docker
+
+before_install:
+    - docker build -t perikala/react-test -f ./client/Dockerfile.dev ./client
+
+
+script:
+    - docker run perikala/react-test npm test -- --coverage
+
+
+after_success:
+    - docker build -t perikala/multi-client ./client
+    - docker build -t perikala/multi-nginx ./nginx
+    - docker build -t perikala/multi-server ./server
+    - docker build -t perikala/multi-worker ./worker
+
+    # Login into the Docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+    # Take those images and push them to the docker hub
+    - docker push perikala/multi-client
+    - docker push perikala/multi-nginx
+    - docker push perikala/multi-server
+    - docker push perikala/multi-worker
+
