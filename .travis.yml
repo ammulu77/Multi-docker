@@ -9,7 +9,7 @@ before_install:
 
 
 script:
-    - docker run -e CI=true perikala/react-test npm test
+    - docker run USERNAME/react-test npm test -- --coverage
 
 after_success:
     - docker build -t perikala/multi-client ./client
