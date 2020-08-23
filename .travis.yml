@@ -21,7 +21,7 @@ after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     
 
-    # Login into the Docker CLI and push the images to docker hub
+    # Login into the Docker CLI and push the images to docker hub - will it work??
     - docker push perikala/multi-client
     - docker push perikala/multi-nginx
     - docker push perikala/multi-server
