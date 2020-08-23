@@ -25,4 +25,5 @@ after_success:
     - docker push perikala/multi-nginx
     - docker push perikala/multi-server
     - docker push perikala/multi-worker
+    
 
