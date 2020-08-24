@@ -14,7 +14,7 @@
              "essential": false 
          },
          {
-             "name": "server",
+             "name": "worker",
              "image": "perikala/multi-worker",
              "hostname": "worker",
              "essential": false 
@@ -33,4 +33,4 @@
              "links": ["client", "server"]
          }
      ]
-}
+}   
